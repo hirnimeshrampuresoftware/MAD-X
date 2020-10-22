@@ -2787,7 +2787,6 @@ sequence* SequenceList::slice_sequence(const std::string slice_style,sequence* t
   sliced_seq->end->next = sliced_seq->start;
 
 
-  if(MaTh::Verbose>1)  std::cout << __FILE__ << " " << __FUNCTION__ << " line " << std::setw(4) << __LINE__  << " " << my_dump_name_list(sequences->list); // CSPE  dump the global sequences->list
 
   int pos=0;
   if ((pos = name_list_pos(thick_seq_name.c_str(), sequences->list)) < 0) // move the pointer in the sequences list to point to our thin sequence
@@ -2799,7 +2798,6 @@ sequence* SequenceList::slice_sequence(const std::string slice_style,sequence* t
     sequences->sequs[pos]= sliced_seq; // pointer moved ok, delete_sequence(thick_sequ)
   }
 
-  if(MaTh::Verbose>1)  std::cout << __FILE__ << " " << __FUNCTION__ << " line " << std::setw(4) << __LINE__  << " " << my_dump_name_list(sequences->list); // CSPE
 
   thick_sequ_name_last=thick_sequ_name;
 

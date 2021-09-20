@@ -86,28 +86,28 @@ jobs:
           EOF
           chmod +x configure
 
-      - run: ./configure
-      - run: ./configure -DBUILD_SHARED_LIBS=OFF
-      - run: ./configure -DBUILD_SHARED_LIBS=ON
-      - run: ./configure -DCMAKE_BUILD_TYPE=Debug
-      - run: ./configure -DCMAKE_BUILD_TYPE=Release
-      - run: ./configure -DMADX_STATIC=OFF
-      - run: ./configure -DMADX_STATIC=ON
-      - run: ./configure -DMADX_DEBUG=OFF
-      - run: ./configure -DMADX_DEBUG=ON
-      - run: ./configure -DMADX_NTPSA=OFF
-      - run: ./configure -DMADX_NTPSA=ON
-      - run: ./configure -DUSE_GC=OFF
-      - run: ./configure -DUSE_GC=ON
-      - run: ./configure -DMADX_FORCE_32=OFF
-      - run: ./configure -DMADX_FORCE_32=ON
-      - run: ./configure -DMADX_ONLINE=OFF
-      - run: ./configure -DMADX_ONLINE=ON
+      - run: ./configure --disable-libquadmath 
+      - run: ./configure -DBUILD_SHARED_LIBS=OFF --disable-libquadmath 
+      - run: ./configure -DBUILD_SHARED_LIBS=ON --disable-libquadmath 
+      - run: ./configure -DCMAKE_BUILD_TYPE=Debug--disable-libquadmath 
+      - run: ./configure -DCMAKE_BUILD_TYPE=Release --disable-libquadmath 
+      - run: ./configure -DMADX_STATIC=OFF --disable-libquadmath 
+      - run: ./configure -DMADX_STATIC=ON --disable-libquadmath
+      - run: ./configure -DMADX_DEBUG=OFF --disable-libquadmath
+      - run: ./configure -DMADX_DEBUG=ON --disable-libquadmath
+      - run: ./configure -DMADX_NTPSA=OFF --disable-libquadmath
+      - run: ./configure -DMADX_NTPSA=ON --disable-libquadmath
+      - run: ./configure -DUSE_GC=OFF --disable-libquadmath
+      - run: ./configure -DUSE_GC=ON --disable-libquadmath
+      - run: ./configure -DMADX_FORCE_32=OFF --disable-libquadmath
+      - run: ./configure -DMADX_FORCE_32=ON --disable-libquadmath
+      - run: ./configure -DMADX_ONLINE=OFF --disable-libquadmath
+      - run: ./configure -DMADX_ONLINE=ON --disable-libquadmath
         if: matrix.os == 'linux'
-      - run: ./configure -DMADX_X11=OFF
-      - run: ./configure -DMADX_X11=ON
-      - run: ./configure -DMADX_LAPACK=OFF
-      - run: ./configure -DMADX_LAPACK=ON
+      - run: ./configure -DMADX_X11=OFF --disable-libquadmath
+      - run: ./configure -DMADX_X11=ON --disable-libquadmath
+      - run: ./configure -DMADX_LAPACK=OFF --disable-libquadmath
+      - run: ./configure -DMADX_LAPACK=ON --disable-libquadmath
 
   build:
     # Configure, build, and test with few settings. This is slow, so shouldn't

@@ -34,7 +34,7 @@ cleanarch:
 libgc-linux32-intel libgc-linux64-intel:
 	$E "*** Building $@"
 	$_ cd $(GCDIR) ; \
-	env CC="icc -m$(ARCH) -DLARGE_CONFIG" ./configure --enable-static --disable-shared --with-pic \
+	env CC="icc -m$(ARCH) -DLARGE_CONFIG" ./configure --disable-libquadmath --enable-static --disable-shared --with-pic \
 	    $(if $(call eq,$(OPENMP),yes),--enable-threads=posix,--disable-threads) ; \
 	make clean ; make ; make check ; cd - ; \
 	cp -f $(GCDIR)/.libs/libgc.a $@.a
@@ -42,7 +42,7 @@ libgc-linux32-intel libgc-linux64-intel:
 libgc-linux32-gnu libgc-linux64-gnu:
 	$E "*** Building $@"
 	$_ cd $(GCDIR) ; \
-	env CC="gcc -m$(ARCH) -DLARGE_CONFIG" ./configure --enable-static --disable-shared --with-pic \
+	env CC="gcc -m$(ARCH) -DLARGE_CONFIG" ./configure --disable-libquadmath --enable-static --disable-shared --with-pic \
 	    $(if $(call eq,$(OPENMP),yes),--enable-threads=posix,--disable-threads) ; \
 	make clean ; make ; make check ; cd - ; \
 	cp -f $(GCDIR)/.libs/libgc.a $@.a
@@ -50,7 +50,7 @@ libgc-linux32-gnu libgc-linux64-gnu:
 libgc-linux32-llvm libgc-linux64-llvm:
 	$E "*** Building $@"
 	$_ cd $(GCDIR) ; \
-	env CC="clang -m$(ARCH) -DLARGE_CONFIG" ./configure --enable-static --disable-shared --with-pic \
+	env CC="clang -m$(ARCH) -DLARGE_CONFIG" ./configure --disable-libquadmath --enable-static --disable-shared --with-pic \
 	    $(if $(call eq,$(OPENMP),yes),--enable-threads=posix,--disable-threads) ; \
 	make clean ; make ; make check ; cd - ; \
 	cp -f $(GCDIR)/.libs/libgc.a $@.a
